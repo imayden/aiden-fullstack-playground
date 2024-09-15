@@ -1,0 +1,24 @@
+<div class="article">
+    <div class="details">
+        <div *ngIf="isLoading" class="loading">
+            Loading...
+        </div>
+
+        <div *ngIf="!isLoading && article">
+            <mat-card>
+                <mat-card-title>{{ article.attributes.title }}</mat-card-title>
+                <mat-card-content [innerHTML]="article.attributes.body.processed"></mat-card-content>
+
+            </mat-card>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+            <mat-card>
+                <mat-card-content>
+                    <p>{{ errorMessage }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+    </div>
+</div>

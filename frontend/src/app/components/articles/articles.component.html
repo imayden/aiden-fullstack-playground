@@ -1,0 +1,30 @@
+<div class="list">
+    <div *ngIf="isLoading" class="loading">
+        Loading...
+    </div>
+
+    <div *ngIf="!isLoading && !errorMessage">
+        <div *ngFor="let article of articles" class="article-card">
+            <mat-card>
+                <mat-card-title>{{ article.attributes.title }}</mat-card-title>
+                <mat-card-content>
+                    <!-- Brief -->
+                    <p>{{ article.attributes.body.summary || (article.attributes.body.value | slice: 0: 200) }}...</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button [routerLink]="['/article', article.id]">Read more</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+        <mat-card>
+            <mat-card-content>
+                <p>{{ errorMessage }}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+</div>
